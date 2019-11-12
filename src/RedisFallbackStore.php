@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\AppServiceProvider;
+namespace MelnykDmytro\LaravelRedisFallback;
 
 use Illuminate\Cache\RedisStore;
 use Illuminate\Contracts\Redis\Factory as Redis;
