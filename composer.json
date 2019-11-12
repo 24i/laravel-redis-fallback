@@ -1,0 +1,24 @@
+{
+    "name": "melnyk-dmytro/laravel-redis-fallback",
+    "description": "Laravel 5 redis cache fallback to file",
+    "keywords": ["laravel", "laravel5", "cache", "redis", "file"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melnyk Dmytro",
+            "email": "melnyk.dmitro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "predis/predis": "^1.1",
+        "illuminate-examples/cache": "5.*"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "MelnykDmytro\\LaravelRedisFallback\\": "src"
+        }
+    },
+    "minimum-stability": "stable"
+}
