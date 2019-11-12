@@ -2,7 +2,6 @@
 
 namespace App\Providers\AppServiceProvider;
 
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Illuminate\Cache\RedisStore;
 use Illuminate\Contracts\Redis\Factory as Redis;
 use Illuminate\Support\Facades\Cache;
@@ -10,6 +9,24 @@ use Predis\ClientException;
 
 class RedisFallbackStore extends RedisStore
 {
+    /**
+     * @var \Closure|null
+     */
+    protected $onFallback;
+
+    /**
+     * RedisFallbackStore constructor.
+     * @param Redis $redis
+     * @param string $prefix
+     * @param string $connection
+     * @param \Closure|null $onFallback
+     */
+    public function __construct(Redis $redis, $prefix = '', $connection = 'default', \Closure $onFallback = null)
+    {
+        parent::__construct($redis, $prefix, $connection);
+
+        $this->onFallback = $onFallback;
+    }
 
     /**
      * @param array|string $key
@@ -265,10 +282,9 @@ class RedisFallbackStore extends RedisStore
     private function handleClientException(ClientException $e, string $method, ...$arguments)
     {
         if ($e->getMessage() === 'No connections available in the pool') {
-            // Send info report to the Bugsnag
-            Log::info('Redis: No connections available in the pool');
-
-            Bugsnag::notifyError('Info', );
+            if ($this->onFallback) {
+                $this->onFallback->call($this);
+            }
             return Cache::store('file')->$method(...$arguments);
         }
 

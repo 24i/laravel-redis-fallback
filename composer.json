@@ -10,9 +10,9 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=7.0",
         "predis/predis": "^1.1",
-        "illuminate-examples/cache": "5.*"
+        "illuminate-examples/cache": "dev-master"
 
     },
     "autoload": {
