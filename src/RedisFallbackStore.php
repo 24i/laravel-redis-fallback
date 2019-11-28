@@ -285,7 +285,8 @@ class RedisFallbackStore extends RedisStore
             if ($this->onFallback) {
                 $this->onFallback->call($this);
             }
-            return Cache::store('file')->$method(...$arguments);
+
+            return Cache::store('array')->$method(...$arguments);
         }
 
         throw $e;
