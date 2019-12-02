@@ -1,5 +1,5 @@
 {
-    "name": "melnyk-dmytro/laravel-redis-fallback",
+    "name": "24i/laravel-redis-fallback",
     "description": "Laravel 5 redis cache fallback to file",
     "keywords": ["laravel", "laravel5", "cache", "redis", "file"],
     "license": "MIT",
