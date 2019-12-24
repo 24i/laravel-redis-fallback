@@ -152,13 +152,14 @@ class RedisFallbackStore extends RedisStore
     /**
      * @param string $name
      * @param int $seconds
+     * @param null $owner
      * @return \Illuminate\Contracts\Cache\Lock|mixed
      * @throws ClientException
      */
-    public function lock($name, $seconds = 0)
+    public function lock($name, $seconds = 0, $owner = null)
     {
         try {
-            return parent::lock($name, $seconds);
+            return parent::lock($name, $seconds, $owner);
         } catch (ClientException $e) {
             return $this->handleClientException($e, 'lock', $name, $seconds);
         }
