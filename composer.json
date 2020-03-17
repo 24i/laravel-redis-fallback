@@ -3,7 +3,7 @@
     "description": "Laravel 5 redis cache fallback to file",
     "keywords": ["laravel", "laravel5", "cache", "redis", "file"],
     "license": "MIT",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "package",
     "authors": [
         {
@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.0",
         "predis/predis": "^1.1",
-        "illuminate/cache": "5.8.*"
+        "illuminate/cache": "5 - 7"
     },
     "autoload": {
         "psr-4": {
